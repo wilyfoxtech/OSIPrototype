@@ -1,0 +1,139 @@
+﻿html,
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+#container {
+    min-height: 100%;
+    position: relative;
+    overflow:auto;
+}
+
+#body {
+    margin-bottom: 50px; /* Height of the footer */
+}
+
+#footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    /* Set the fixed height of the footer here */
+    height: 45px;
+    background-color: #f5f5f5;
+}
+
+.AppWizardSteps {
+    float: left;
+    height: 50px;
+    font-weight: bold;
+    color: #fff;
+    border-bottom-left-radius: 5px;
+    border-top-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-top-right-radius: 5px;
+    margin: 5px;
+    vertical-align: middle;
+    line-height: 50px;
+    padding-left: 10px;
+    padding-right: 10px;
+    min-width: 150px;
+}
+
+.AppInActiveWizardStep {
+    background-color: #9dc8e2;
+}
+
+.AppActiveWizardStep {
+    background-color: #2184be;
+}
+
+.Appdisabled {
+    opacity: 0.5;
+    color: grey;
+    pointer-events: none;
+    cursor: not-allowed;
+}
+
+.AppNoBottomPadding {
+    margin-bottom: 0px !important;
+}
+
+.Approw {
+    margin-bottom: 15px;
+    margin-right: -15px;
+    margin-left: -15px;
+    clear: both;
+}
+
+.AppError {
+    color: #a94442;
+}
+
+.AppControlError {
+    border-color: #843534;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 6px #ce8483;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 6px #ce8483;
+}
+
+span.has-error {
+    color: #b94a48;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+}
+
+.ajax-loading-animation {
+    font-size: 20px;
+    text-align: center;
+    margin-top: 70px;
+    float: left;
+}
+
+.ajax-loading-animation-small {
+    font-size: 12px;
+    text-align: center;
+    margin-top: 0px;
+    padding-top: 10px;
+    float: left;
+}
+
+.AppRight {
+    margin-right: 5px;
+    float: right;
+}
+
+/* Tooltip */
+.AppToolTips + .tooltip > .tooltip-inner {
+    background-color: #f5f5f5;
+    color: #333;
+    border: 1px solid black;
+    padding: 15px;
+    font-size: 12px;
+}
+/* Tooltip on top */
+.AppToolTips + .tooltip.top > .tooltip-arrow {
+    border-top: 5px solid black;
+}
+
+.AppGridButtonHolder {
+    width: 100%;
+    padding: 5px;
+    background-color: #f5f5f5;
+    border-color: #ccc;
+    border-style: solid;
+    border-left-width: 1px;
+    border-top-width: 1px;
+    border-right-width: 1px;
+    border-bottom-width: 0px;
+    text-align: right;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+}
+
+.AppNoNewRow {
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
