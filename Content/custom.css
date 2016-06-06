@@ -685,7 +685,8 @@
     font-family: verdana,arial,helvetica,sans-serif;
     font-size: 8pt;
     font-style: normal;
-    background:url(../images/header_background.png);
+    background :url(../images/header_background.png);
+    background-size: cover;
     background-color: #fff;
 }
 
@@ -915,7 +916,7 @@ a.headerlnkactive {
 }
 
 .shadow {
-    background: url('../../Images/Shadow.png') repeat-x;
+    background: url('../Images/Shadow.png') repeat-x;
 }
 
 .header-user-image {

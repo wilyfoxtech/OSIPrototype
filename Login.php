@@ -21,8 +21,36 @@
     <script src="Scripts/jquery-ui-1.11.4.min.js"></script>
     <script src="Scripts/portal.custom.js"></script>
     <script src="Scripts/Global.js"></script>
+
+    <script>
+
+        function LoadUserTypes()
+        {
+            $('#lnkAppLogin').prop("disabled", true);
+
+            $.ajax({
+                type : "GET",
+                url : "Getusers.php?typeid=" + $('#ddlLoginType').val(),
+                dataType: "JSON",
+                success : function (jsondata) {
+
+                    AppAdminFillDefaultEntryForDropdown($('#ddlLoginUsers'));
+
+                    for (var i = 0; i < jsondata.length; i++) {
+                        var newOption = "<option value='" + jsondata[i].id + "'>" + jsondata[i].firstname + ' ' + jsondata[i].lastname
+                            + "</option>";
+                        $("#ddlLoginUsers").append(newOption);
+                    }
+
+                    $('#lnkAppLogin').prop("disabled", false);
+                }
+            });
+        }
+
+    </script>
+
 </head>
-<body class="body-blue">
+
 <div id="container">
     <div class="mini-navbar mini-navbar-dark hidden-xs" id="header">
         <div class="customheader">
@@ -34,8 +62,10 @@
                                 <img style="max-height: 70px;padding-top: 5px;" src="images/cwds.png"/>
                             </div>
                             <div style="max-width: 400px;padding-top: 20px;text-align: center;">
-                                <span style="font-weight: bold;font-size:16px; ;">CHILD WELFARE DIGITAL SERVICES</span><br>
-                                <span style="font-weight: bold;font-size:10px; ;">CALIFORNIA HEALTH & HUMAN SERVICES</span>
+                                <span
+                                    style="font-weight: bold;font-size:16px; ;">CHILD WELFARE DIGITAL SERVICES</span><br>
+                                <span
+                                    style="font-weight: bold;font-size:10px; ;">CALIFORNIA HEALTH & HUMAN SERVICES</span>
                             </div>
                         </div>
                     </div>
@@ -45,7 +75,7 @@
     </div>
     <div class="shadow" style="padding-top:0px"><img src="images/null.png"/></div>
     <div id="body">
-        <div class="wrapper" style="min-height:500px;">
+        <div class="wrapper" style="min-height:400px;">
             <div class="form-group col-xs-4 AppNoNewRow" style="min-height:inherit;">
                 <div class="panel panel-default" id="divmessagepanel" style="min-height:inherit;">
                     <div class="panel-heading">
@@ -75,26 +105,40 @@
                         <h3 class="panel-title">Log in</h3>
                     </div>
                     <div class="panel-body" style="float:none;">
-                        <p class="help-block">
-                            This is a State of California computer application that is for official use only by
-                            authorized users and is subject to being monitored and/or restricted at any time. This
-                            application processes, stores, or transmits confidential information. Unauthorized or
-                            improper use of this system may result in administrative disciplinary action and/or Civil
-                            and criminal penalties. By continuing to use this application you indicate your awareness of
-                            and consent to these terms and conditions of use. Do not log in and use this application if
-                            you are not an authorized user or you do not agree to the conditions stated in this warning.<br/><br/>
-                        </p>
-                        <div class="form-group" style="padding-bottom:35px;">
+                        <div class="form-group">
+                            <div class="col-xs-12">
+                                <p class="help-block">
+                                    For demonstration purpose and ease of use user-name and passwords have been replaced
+                                    with user-types
+                                </p>
+                            </div>
+                            <div class="col-xs-12">
+                                <label class="control-label">User Type</label><span
+                                    style="color:red;font-weight:bold">&nbsp;*</span>
+                                <select id="ddlLoginType" class="form-control input-sm" onchange="LoadUserTypes();">
+                                    <option value="1">Foster Parent</option>
+                                    <option value="2">Case Worker</option>
+                                </select>
+                            </div>
+                            <div class="col-xs-12" style="margin-top: 5px;margin-bottom: 25px;">
+                                <label class="control-label">Select user</label><span
+                                    style="color:red;font-weight:bold">&nbsp;*</span>
+                                <select id="ddlLoginUsers" class="form-control input-sm" ></select>
+                            </div>
+                        </div>
+                        <div class="form-group" style="padding-bottom:35px;padding-top: 20px;">
                             <div class="col-xs-7 col-xs-offset-5">
-                                <a class="btn btn-primary" href="" onclick="return SecurePage();" target="_parent"
+                                <a class="btn btn-primary" href="Landing.php" target="_parent"
                                    role="button" id="lnkAppLogin">Log In</a>
                             </div>
                         </div>
-                        <div class="form-group" style="margin-top:10px;">
-                            <div class="col-xs-11 col-xs-offset-1">
+                        <div class="form-group" style="margin-top:20px;">
+                            <div class="col-xs-11 col-xs-offset-1" style="padding-top: 25px;">
                                 <div style="width:100%;text-align:center;">
-                                    <a href="https://ext2.dhcs.ca.gov/webpassmgr/" target="_blank"
-                                       id="lnkForgotPassword">Forgot Password or Username?</a>
+                                    <a href="#" target="_parent"
+                                       id="lnkForgotPassword">Forgot Password or Username?</a><br>
+                                    <a href="RegisterParent.php" target="_parent"
+                                       id="lnkForgotPassword">New foster parent? Register here</a>
                                 </div>
                             </div>
                         </div>
