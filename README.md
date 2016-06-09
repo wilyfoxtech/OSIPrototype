@@ -28,7 +28,7 @@ After the interviews we developed User Stories (third HCD) to refine the underst
 Once the user stories and functionality had been identified and prioritized the team set out on implementing the prototype, which we split into three sprints.  At the end of each sprint we conducted Usability Testing (forth HCD) with our end users during our ‘sprint review meetings’.  
 
 ####Overview of our Agile approach:
-URL – to github 
+https://github.com/wilyfoxtech/OSIPrototype/tree/master/Scrum-Approach 
 
 ## Implementation Techniques
 Along with our iterative implementation approach to developing the prototype the team utilized the Bootstrap framework to provide a foundation for the style guide.  Bootstrap provided a solid design foundation that the team leveraged to meet the needs of the user interface, and to refine the responsive design of the application.
