@@ -7,6 +7,10 @@
     <meta name="description" content="Child Welfare Services: Case Management & Residential Licensing System">
     <meta name="author" content="Wily Fox Technologies">
 
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+
     <title>Child Welfare Services: Case Management & Residential Licensing System</title>
     <link href="/images/CWDS.png" rel="shortcut icon"/>
 
@@ -24,17 +28,47 @@
 
     <script>
 
-        function LoadUserTypes()
+        $(document).ready(function () {
+            LoadUserTypes();
+        })
+
+        function setsession()
         {
-            $('#lnkAppLogin').prop("disabled", true);
+            $('#btnLogin').prop("disabled", true);
 
             $.ajax({
-                type : "GET",
-                url : "Getusers.php?typeid=" + $('#ddlLoginType').val(),
+                type: "GET",
+                    url: "SetSession.php?typeid=" + $('#ddlLoginType').val() + '&userid=' + $('#ddlLoginUsers').val() + '&name=' + $("#ddlLoginUsers option:selected").text(),
                 dataType: "JSON",
-                success : function (jsondata) {
+                success: function (jsondata) {
 
-                    AppAdminFillDefaultEntryForDropdown($('#ddlLoginUsers'));
+                    if($('#ddlLoginType').val()==1)
+                        window.location='landing.php';
+                    else
+                        window.location='caseworkerlanding.php';
+
+                    $('#btnLogin').prop("disabled", false);
+                }
+            });
+
+
+            return false;
+        }
+
+        function LoadUserTypes() {
+            $('#btnLogin').prop("disabled", true);
+
+            $.ajax({
+                type: "GET",
+                url: "Getusers.php?typeid=" + $('#ddlLoginType').val(),
+                dataType: "JSON",
+                success: function (jsondata) {
+
+                    // AppAdminFillDefaultEntryForDropdown($('#ddlLoginUsers'));
+
+                    if ($('#ddlLoginUsers') != null) {
+                        $('#ddlLoginUsers').html('');
+                    }
 
                     for (var i = 0; i < jsondata.length; i++) {
                         var newOption = "<option value='" + jsondata[i].id + "'>" + jsondata[i].firstname + ' ' + jsondata[i].lastname
@@ -42,7 +76,7 @@
                         $("#ddlLoginUsers").append(newOption);
                     }
 
-                    $('#lnkAppLogin').prop("disabled", false);
+                    $('#btnLogin').prop("disabled", false);
                 }
             });
         }
@@ -99,43 +133,48 @@
                     </div>
                 </div>
             </div>
-            <div class="form-group col-xs-4 AppNoNewRow" style="min-height:inherit;">
+            <div class="form-group col-xs-4 AppNoNewRow" style="min-height:inherit;" style="min-height:400px;">
                 <div class="panel panel-default" id="divloginpanel" style="min-height:inherit;">
                     <div class="panel-heading">
                         <h3 class="panel-title">Log in</h3>
                     </div>
                     <div class="panel-body" style="float:none;">
-                        <div class="form-group">
-                            <div class="col-xs-12">
-                                <p class="help-block">
-                                    For demonstration purpose and ease of use user-name and passwords have been replaced
-                                    with user-types
-                                </p>
+                        <form method="post" autocomplete="off" id="frmLogin" name="frmLogin" role="form"
+                              action="SetSession.php">
+                            <div class="form-group">
+                                <div class="col-xs-12">
+                                    <p class="help-block">
+                                        For demonstration purpose and ease of use, user-name and passwords have been
+                                        replaced
+                                        with user-types
+                                    </p>
+                                </div>
+                                <div class="col-xs-12">
+                                    <label class="control-label">User Type</label><span
+                                        style="color:red;font-weight:bold">&nbsp;*</span>
+                                    <select name="ddlLoginType" id="ddlLoginType" class="form-control input-sm" onchange="LoadUserTypes();">
+                                        <option value="1">Foster Parent</option>
+                                        <option value="2">Case Worker</option>
+                                    </select>
+                                </div>
+                                <div class="col-xs-12" style="margin-top: 5px;margin-bottom: 20px;">
+                                    <label class="control-label">Select user</label><span
+                                        style="color:red;font-weight:bold">&nbsp;*</span>
+                                    <select id="ddlLoginUsers" name="ddlLoginUsers" class="form-control input-sm"></select>
+                                </div>
                             </div>
-                            <div class="col-xs-12">
-                                <label class="control-label">User Type</label><span
-                                    style="color:red;font-weight:bold">&nbsp;*</span>
-                                <select id="ddlLoginType" class="form-control input-sm" onchange="LoadUserTypes();">
-                                    <option value="1">Foster Parent</option>
-                                    <option value="2">Case Worker</option>
-                                </select>
+                            <div class="form-group" style="padding-bottom:5px;">
+                                <div class="col-xs-7 col-xs-offset-5">
+                                    <button type="submit" class="btn btn-primary" onclick="return setsession();"
+                                            id="btnLogin" name="btnLogin">Log In
+                                    </button>
+                                </div>
                             </div>
-                            <div class="col-xs-12" style="margin-top: 5px;margin-bottom: 25px;">
-                                <label class="control-label">Select user</label><span
-                                    style="color:red;font-weight:bold">&nbsp;*</span>
-                                <select id="ddlLoginUsers" class="form-control input-sm" ></select>
-                            </div>
-                        </div>
-                        <div class="form-group" style="padding-bottom:35px;padding-top: 20px;">
-                            <div class="col-xs-7 col-xs-offset-5">
-                                <a class="btn btn-primary" href="Landing.php" target="_parent"
-                                   role="button" id="lnkAppLogin">Log In</a>
-                            </div>
-                        </div>
-                        <div class="form-group" style="margin-top:20px;">
-                            <div class="col-xs-11 col-xs-offset-1" style="padding-top: 25px;">
+                        </form>
+                        <div class="form-group" style="margin-top:5px;">
+                            <div class="col-xs-11 col-xs-offset-1" style="padding-top: 10px;">
                                 <div style="width:100%;text-align:center;">
-                                    <a href="#" target="_parent"
+                                    <a href="#" target="_parent" style="cursor: not-allowed;"
                                        id="lnkForgotPassword">Forgot Password or Username?</a><br>
                                     <a href="RegisterParent.php" target="_parent"
                                        id="lnkForgotPassword">New foster parent? Register here</a>
@@ -144,7 +183,9 @@
                         </div>
                     </div>
                 </div>
+
             </div>
+
         </div>
     </div>
     <div id="footer">

@@ -6,8 +6,12 @@
  * Time: 4:24 PM
  */
 
+session_start();
+
 ini_set('display_errors',1);
 error_reporting(E_ALL);
+
+$fosterparentid = $_SESSION['LoginUserID'];
 
 $errors = array(); //To store errors
 $form_data = array(); //Pass back the data to `form.php`
@@ -46,7 +50,7 @@ else { //If not, process the form, and return true on success
     else {
 
         $stmt = $mysqli->prepare("call AddUpdateFosterparent(?,?,?,?,?,?,?,?,?,?,@Status,@NewID)");
-        $FosterParentID = 0;
+        $FosterParentID = $fosterparentid;
         $txtEmailID = $mysqli->real_escape_string($_POST['txtEmailID']);
         $txtFirstName = $mysqli->real_escape_string($_POST['txtFirstName']);
         $LastName = $mysqli->real_escape_string($_POST['txtLastName']);

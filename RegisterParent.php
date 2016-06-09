@@ -7,6 +7,10 @@
     <meta name="description" content="Child Welfare Services: Case Management & Residential Licensing System">
     <meta name="author" content="Wily Fox Technologies">
 
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+
     <title>Child Welfare Services: Case Management & Residential Licensing System</title>
     <link href="images/CWDS.png" rel="shortcut icon"/>
 
@@ -32,7 +36,7 @@
             $("#txtZip").mask("99999?-99999");
             $("#txtDOB").datepicker();
             $("#txtDOB").mask('00/00/0000');
-            /*
+/*
             $('#txtEmailID').val('ram@r.com');
             $('#txtFirstName').val('ram');
             $('#txtLastName').val('mala');
@@ -41,7 +45,7 @@
             $('#txtCity').val('folsom');
             $('#txtState').val('CA');
             $('#txtZip').val('95630');
-            */
+*/
             $("#fmrRegisterParent").validate({
                 submitHandler : function () {
 
@@ -58,7 +62,7 @@
                         type : "POST",
                         url : "SaveRegistration.php",
                         data : serializedData,
-                        success : function (data) {
+                        success : function (data) {//alert(data);
                                 setFormStatusMessage('fmrRegisterParent','divmanageRegistration', true, 'Foster parent registered successfully! Click on Back button to navigate back to login page now.');
                                 $('#btnbackFromRegistration').prop("disabled", false);
                         }
@@ -107,7 +111,7 @@
     <div id="body">
         <div class="wrapper">
             <form method="post" class="form-horizontal" autocomplete="off" id="fmrRegisterParent" name="fmrRegisterParent"
-                  role="form" action="test.php">
+                  role="form" action="SaveRegistration.php">
                 <div id="divRegisterRegistration">
                     <div class="panel panel-default" style="margin-left:15px;margin-right:20px;padding-bottom:10px;"
                          id="divManageRegistrationPanel">
@@ -223,15 +227,5 @@
         </footer>
     </div>
 </div>
-<?php
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    ?>
-    <script>
-        ajaxValidateRegistration();
-    </script>
-    <?php
-}
-?>
-
 </body>
 </html>

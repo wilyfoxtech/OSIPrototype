@@ -1,0 +1,64 @@
+The prototype uses following software and this documentation describes how you can install and run it on a WINDOWS PC.
+
+The public URL for this prototype is hosted currently at: http://adpq-poc.azurewebsites.net/
+
+1) Apache: Apache 2.4.20 x64: http://www.apachehaus.com/cgi-bin/download.plx?dli=WVUO350aBJzTEN2aTNTT5pkVOpkVFVVckpWRwU1Z
+2) Php: PHP 5.6,  VC11 x64 Thread Safe (2016-May-26 18:22:23) : http://windows.php.net/downloads/releases/php-5.6.22-Win32-VC11-x64.zip
+3) Mysql: MySQL Sever 5.7.13 for windows: https://dev.mysql.com/downloads/installer/
+4) Dependency manager for php called composer: https://getcomposer.org/download/
+5) PhpUnit for automated unit tests: https://phar.phpunit.de/phpunit.phar, https://phpunit.de/manual/current/en/installation.html
+6) Boostrap HTML/CSS/JS framework: http://getbootstrap.com/(Already part of the project and no need to install it separately).
+7) jQUery JavaScript framework. http://jquery.com/(Already part of the project and no need to install it separately).
+
+Install mysql database server
+-----------------------------------
+1) Download the .msi file and install the server using the wizard steps. Please use mysql root password as Change12!, which is being used in the php code. The server name is assumed to be "localhost"
+2) Open the mysql-work-bench, and run the sql files given on the GitHub location, https://github.com/wilyfoxtech/OSIPrototype to create database and test date. Files are:
+   a) https://github.com/wilyfoxtech/OSIPrototype/tree/master/DB/Database_creation.sql
+   b) https://github.com/wilyfoxtech/OSIPrototype/tree/master/DB/Data_creation.sql
+3) Please refresh schema list and you would see "fostercare" database being created and ready to use.
+ 
+Php installtion
+---------------------
+1) Download the zip file from download location given above and un-zip into drive of your choice lets say, "C:\php". The contents have to be directly under this location and not as a subdirectory.
+2) Goto location "c:\php\" and create a copy of file "php.ini-production" and name it "php.ini".
+3) Open the file "php.ini", enable mysql for php by un-commenting the lines for:
+   a) extension=php_mysql.dll
+   b) extension=php_mysqli.dll
+   c) extension=php_openssl.dll
+   d) extension=php_pdo_mysql.dll
+   
+   You could enable these extensions by removing prefixed ";" and saving the file.
+
+Install Apache HTTP server
+------------------------------------
+1) Download the  apache server as a zip file from above location.
+2) Un-zip the contentained folder "Apache24" to "c:\Apache24".
+3) Open file "c:\Apache24\conf\httpd.conf", locate string "#LoadModule xml2enc_module modules/mod_xml2enc.so", and immediately after, insert below lines, to enable php on apache server, and save it.
+
+LoadModule php5_module "c:/php/php5apache2_4.dll"
+AddHandler application/x-httpd-php .php
+# configure the path to php.ini
+PHPIniDir "C:/php"
+
+4) Please note "c:/php", would be the base directory where you would have un-zipped php contents.
+5) Copy the contents of GitHub website, "https://github.com/wilyfoxtech/OSIPrototype", into location "C:\Apache24\htdocs\OSIPrototype".
+6) Stop IIS if it is running as it would clash with Apache server.
+7) Navigate to URL "http://localhost/OSIPrototype/login.php" and you would be displayed with a webpage similar to our public URL, http://adpq-poc.azurewebsites.net/.
+
+Install php unit:
+--------------------
+1)Download the .phar file from above location, save as "phpunit.phar" in php location which is given in php-installation step. Which could be c:\php.
+2)Open command line(WINDOWS + R and type cmd and enter), run command, 
+   a) cd c:\php
+   b) echo @php "%~dp0phpunit.phar" %* > phpunit.cmd
+   c) exit
+3) Open a new command line and confirm that you can execute PHPUnit from any path:
+   a) phpunit --version
+   Now You would see : PHPUnit x.y.z by Sebastian Bergmann and contributors.
+   
+Running unit tests
+-------------------------
+1) Open command prompt
+2) Run command phpunit --verbose "C:\Apache24\htdocs\OSIPrototype\DatabaseConnectTest.php" to assert if connection is okay.
+

@@ -6,6 +6,7 @@ use FosterCare;
 CREATE TABLE CaseWorker
 (
 	CaseWorkerID         INTEGER NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	EmailID				 VARCHAR(100) NULL,	
 	FirstName            VARCHAR(50) NULL,
 	LastName             VARCHAR(50) NULL,
 	LicenseNumber        VARCHAR(50) NULL,
@@ -52,6 +53,7 @@ CREATE TABLE FosterChild
 CREATE TABLE FosterParent
 (
 	FosterParentID       INTEGER NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    EmailID				 VARCHAR(100) NULL,	
 	FirstName            VARCHAR(50) NULL,
 	LastName             VARCHAR (50) NULL,
 	DateOfBirth          DATE NULL,
