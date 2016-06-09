@@ -1,23 +1,24 @@
-# Wily Fox's OSI ADPQ Prototype
+# Wily Fox's  ADPQ Prototype
 
-Prototype URL - 
+#### Prototype URL - 
 http://adpq-poc.azurewebsites.net/ 
 
 Wily Fox Technologies’ prototype application is a demonstration of our open agile software development approach to the requirements outlined in the Request for Information (RFI) #75001, Agile Development Pre-Qualified (ADPQ) Vendor Pool.  This working prototype allows parents of foster kids to establish and manage a profile that they set up, view children’s residential facilities within their zip code, and securely communicate with a case worker using the application.  The application leverages an open data set through California Health & Human Services API, which includes data for foster family agency locations, and was developed using an agile approach to software development. 
 
-# Our Approach
+## Our Approach
 On the onset of our effort we selected one leader for our team, Phil Smith, to have the authority and responsibility for the implementation of the working prototype.  We then set out on assigning roles for the rest of the team, which follow:
- Product Manager – Phil Smith 
- Technical Architect – Phil Smith
- Interaction Designer/User Researcher – Ram Dongre
- Writer – Phil Smith
- Business Analyst – Sri Latha 
- Front End Web Developer – Ram Dongre
- Backend Web Developer – Kirk Noe
- DevOps Engineer – Ram Dongre
- Usability Tester/End User – Carole McCormick
  
-# Understand What People Need
+ 1. Product Manager - Phil Smith 
+ 2. Technical Architect – Phil Smith
+ 3. Interaction Designer/User Researcher – Ram Dongre
+ 4. Writer – Phil Smith
+ 5. Business Analyst – Sri 
+ 6. Front End Web Developer – Ram Dongre
+ 7. Backend Web Developer – Kirk Noe
+ 8. DevOps Engineer – Ram Dongre
+ 9. Usability Tester/End User – Carole McCormick
+ 
+## Understand What People Need
 Once the roles were established we put our efforts to addressing what the prototype needed to achieve to meet the business and human needs of the effort.  To help guide us we aligned the recommendations in the U.S. Digital Services Playbook with the Wily Fox agile implementation approach.  The first “human-centered design” (HCD) technique the team used was visioning/brainstorming where we discussed the broad goals of what the application needed to meet: establishing a profile, viewing facilities within a zip code, and facilitate secure communication between case workers and foster parents.  
 
 Once the goals of the prototype were understood we included people (our end users) not directly involved in developing the application and conducted User Interviews/Focus Group Sessions (second HCD) with them to provide clarification to the broad goals of the prototype that had been identified by the team.  
@@ -26,10 +27,10 @@ After the interviews we developed User Stories (third HCD) to refine the underst
 
 Once the user stories and functionality had been identified and prioritized the team set out on implementing the prototype, which we split into three sprints.  At the end of each sprint we conducted Usability Testing (forth HCD) with our end users during our ‘sprint review meetings’.  
 
-Overview of our Agile approach:
+####Overview of our Agile approach:
 URL – to github 
 
-# Implementation Techniques
+## Implementation Techniques
 Along with our iterative implementation approach to developing the prototype the team utilized the Bootstrap framework to provide a foundation for the style guide.  Bootstrap provided a solid design foundation that the team leveraged to meet the needs of the user interface, and to refine the responsive design of the application. 
 
 The team also leveraged jQuery in the implementation to help make the application more versatile and extensible.  It provided our implementation with a flexible API to help the application perform well across a variety of web browsers.  
