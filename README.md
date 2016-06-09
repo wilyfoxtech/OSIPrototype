@@ -31,12 +31,13 @@ Once the user stories and functionality had been identified and prioritized the 
 URL – to github 
 
 ## Implementation Techniques
-Along with our iterative implementation approach to developing the prototype the team utilized the Bootstrap framework to provide a foundation for the style guide.  Bootstrap provided a solid design foundation that the team leveraged to meet the needs of the user interface, and to refine the responsive design of the application. 
+Along with our iterative implementation approach to developing the prototype the team utilized the Bootstrap framework to provide a foundation for the style guide.  Bootstrap provided a solid design foundation that the team leveraged to meet the needs of the user interface, and to refine the responsive design of the application.
 
 The team also leveraged jQuery in the implementation to help make the application more versatile and extensible.  It provided our implementation with a flexible API to help the application perform well across a variety of web browsers.  
-Beside using Bootstrap and jQuery, two modern open-source technologies, our team also used Linux, Apache, MySQL, PHP (LAMP), Web Matrix, and Azure to implement and host our prototype application.  One quick note regarding Web Matrix, it allows us to deploy the entire solution easily as one package to the VM (as a container).  
+Beside using Bootstrap and jQuery, two modern open-source technologies, our team also used Linux, Apache, MySQL, PHP (LAMP), Web Matrix, and Azure to implement and host our prototype application.  One quick note regarding Web Matrix, it allows us to deploy the entire solution easily as one package to the VM (as a container).
 
-The technical team deployed the solution to the Wily Fox Azure platform, as we have used the platform in the past to host a variety of websites and applications.  We provisioned a new dedicated LAMP Virtual Machine (VM) to host the application through a publically accessible URL.  The Azure foundation let us easily provision resources as it is an IaaS, and the provisioned VM provided us as PaaS.  
+The technical team deployed the solution to the Wily Fox Azure platform, as we have used the platform in the past to host a variety of websites and applications.  We provisioned a new dedicated LAMP Virtual Machine (VM) to host the application through a publically accessible URL.  The Azure foundation let us easily provision resources as it is an IaaS, and the provisioned VM provided us as PaaS.
+
 One of the benefits of deploying the entirety of the application in the Wily Fox Azure platform, was that we already had a mature and stable infrastructure.  The established IaaS included our configuration management solution Team Foundation Server with integrated services to the platform where we can continuously monitor every application, solution, virtual machine, security configuration, and resource.  In turn the dedicated VM has continuous monitoring on many levels and is integrated with our source control system to facilitate ease of deployments and testing automation.  Besides using our established source control system, we have published the application and artifacts to this GitHub repository. 
 
 Installation and deployment instructions: 
