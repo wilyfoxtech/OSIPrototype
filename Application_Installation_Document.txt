@@ -46,6 +46,10 @@ PHPIniDir "C:/php"
 6) Stop IIS if it is running as it would clash with Apache server.
 7) Navigate to URL "http://localhost/OSIPrototype/login.php" and you would be displayed with a webpage similar to our public URL, http://adpq-poc.azurewebsites.net/.
 
+Database connection details in application
+------------------------------------------
+1) You can update database connection details in config.ini file part of the application.
+
 Install php unit:
 --------------------
 1)Download the .phar file from above location, save as "phpunit.phar" in php location which is given in php-installation step. Which could be c:\php.
